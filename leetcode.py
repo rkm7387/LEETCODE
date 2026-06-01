@@ -16,3 +16,17 @@ class Solution238:
             output.append(left[i] * right [i])
 
         return output     
+
+# 271: Encode and decode a string
+class Solution271:
+    def encode(self,strs:list[str]):
+        if not strs:
+            return chr(256)
+        separate = chr(257)
+        return separate.join(strs)
+    
+    def decode(self, s:str):
+        if s == chr(258):
+            return []
+        separate = chr(257)
+        return s.split(separate)  
