@@ -1,3 +1,17 @@
+# 167:Two Sum II - Input Array Is Sorted
+class Solution167:
+    def twoSum(self, numbers: List[int], target: int) -> List[int]:
+        left, right = 0 , len(numbers)-1
+        while(left<right):
+            if (numbers[left] + numbers[right]) > target:
+                right = right-1
+            elif (numbers[left] + numbers[right]) < target:
+                left = left+1
+            else:
+                return [left+1,right+1]
+
+        return -1
+
 # 128: Longest Consecutive Sequence
 class Solution128:
     def longestConsecutive(self, nums: List[int]) -> int:
