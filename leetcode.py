@@ -1,3 +1,17 @@
+# 1:Longest Substring
+class Solution1:
+    def lengthOfLongestSubstring(self, s: str) -> int:
+        charSet = set()
+        left  = 0
+        res = 0
+        for right in range(len(s)):
+            while s[right] in charSet:
+                charSet.remove(s[left])
+                left += 1
+            charSet.add(s[right])
+            res = max(res, right-left+1)
+        return res
+
 # 167:Two Sum II - Input Array Is Sorted
 class Solution167:
     def twoSum(self, numbers: List[int], target: int) -> List[int]:
