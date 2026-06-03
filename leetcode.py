@@ -1,3 +1,26 @@
+# 5: Longest Pallindrom
+class Solution5:
+    def longestPalindrome(self, s: str) -> str:
+        if not s or len(s) < 1:
+            return ""
+        left,right = 0,0
+        for i in range(len(s)):
+            len1 = self.checkPallindrom(s,i,i)
+            len2 = self.checkPallindrom(s,i,i+1)
+            length = max(len1,len2)
+
+            if length > (right - left):
+                left = i - (length-1)//2
+                right = i + (length)//2
+        return s[left:right+1]
+
+    def checkPallindrom(self,s,left,right):
+        L,R = left,right
+        while L >= 0 and R < len(s) and s[L] == s[R]:
+            L -= 1
+            R += 1
+        return R - L - 1
+
 # 1:Longest Substring
 class Solution1:
     def lengthOfLongestSubstring(self, s: str) -> int:
