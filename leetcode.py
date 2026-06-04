@@ -1,3 +1,18 @@
+# 45: Jump Game 2
+class Solution45:
+    def jump(self, nums: List[int]) -> int:
+        n = len(nums)
+        jumps = 0
+        l, r = 0, 0
+        while(r < n-1):
+            farthest = 0
+            for i in range(l, r+1):
+                farthest = max(i+nums[i], farthest)
+            l = r + 1
+            r = farthest
+            jumps += 1
+        return jumps
+
 # 5: Longest Pallindrom
 class Solution5:
     def longestPalindrome(self, s: str) -> str:
