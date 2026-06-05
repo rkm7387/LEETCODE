@@ -1,3 +1,25 @@
+# 46: Permutation
+class Solution46:
+    def permute(self, nums: List[int]) -> List[List[int]]:
+        result = []
+        used = [False] * len(nums)
+
+        def backtrack(current):
+            if len(current) == len(nums):
+                result.append(current[:])
+                return
+            
+            for i in range(len(nums)):
+                if not used[i]:
+                    current.append(nums[i])
+                    used[i] = True
+                    backtrack(current)
+                    used[i] = False
+                    current.pop()
+
+        backtrack([])
+        return result
+
 # 70: Climbing Stairs
 class Solution70:
     def climbStairs(self, n: int) -> int:
