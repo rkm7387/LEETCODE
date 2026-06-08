@@ -1,3 +1,34 @@
+# 54: Print Spiral Matrix
+class Solution54:
+    def spiralOrder(self, matrix: List[List[int]]) -> List[int]:
+        ans = []
+        n = len(matrix)
+        m = len(matrix[0])
+
+        top,left = 0,0
+        bottom,right = n-1, m-1
+
+        while top <= bottom and left <= right:
+            for i in range(left,right+1):
+                ans.append(matrix[top][i])
+            top += 1
+
+            for i in range(top,bottom+1):
+                ans.append(matrix[i][right])
+            right -= 1
+
+            if top <= bottom:
+                for i  in range(right, left-1, -1):
+                    ans.append(matrix[bottom][i])
+                bottom -= 1
+
+            if left <= right:
+                for i in range(bottom, top-1, -1):
+                    ans.append(matrix[i][left])
+                left += 1
+
+        return ans
+
 # 48: Rotate image
 class Solution48:
     def rotate(self, matrix: List[List[int]]) -> None:
@@ -12,7 +43,6 @@ class Solution48:
         for i in range(n):
             for j in range(n//2):
                 matrix[i][j], matrix[i][n-1-j] = matrix[i][n-1-j], matrix[i][j]
-
 
 # 47: Permutation 2
 class Solution47:
