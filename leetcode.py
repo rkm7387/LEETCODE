@@ -1,3 +1,12 @@
+# 6: zigzag
+class Solution6:
+    def convert(self, s: str, numRows: int) -> str:
+        t = list(range(numRows)) + list(range(numRows-2,0,-1))
+        r = [''] * numRows
+        for i, char in enumerate(s):
+            r[t[i % len(t)]] += char
+        return ''.join(r)
+
 # 56: Merge Inteval
 class Solution56:
     def merge(self, intervals: List[List[int]]) -> List[List[int]]:
