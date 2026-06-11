@@ -1,3 +1,33 @@
+# 678: Paranthesis String
+class Solution678:
+    def checkValidString(self, s: str) -> bool:
+        n = len(s)
+        dp = [[-1] * n for _ in range(n)]
+
+        return self.checkValid(0,0,s,dp)
+
+    def checkValid(self,ind,count,s,dp):
+        if count < 0:
+            return False
+        if ind == len(s):
+            return count == 0
+        
+        if dp[ind][count] != -1:
+            return dp[ind][count]
+
+        ans = False
+
+        if s[ind] == '(':
+            ans = self.checkValid(ind+1, count+1, s, dp)
+        elif s[ind] == ')':
+            ans = self.checkValid(ind+1, count-1,s,dp)
+        else:
+            ans = (self.checkValid(ind + 1, count - 1, s, dp) or 
+                   self.checkValid(ind + 1, count, s, dp) or 
+                   self.checkValid(ind + 1, count + 1, s, dp))
+        dp[ind][count] = ans
+        return ans
+
 # 20: Valid Paranthesis
 class Solution20:
     def isValid(self, s: str) -> bool:
