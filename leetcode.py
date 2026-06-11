@@ -1,3 +1,36 @@
+# 8: ATOI
+class Solution8:
+    def myAtoi(self, s: str) -> int:
+        n = len(s)
+        INT_MAX = 2 ** 31 - 1
+        INT_MIN = -2 ** 31
+        sign = 1
+        index = 0
+        result = 0
+
+        while index < n and s[index] == " ":
+            index += 1
+
+        if index < n:
+            if s[index] == "+":
+                sign = 1
+                index += 1
+            elif s[index] == "-":
+                sign = -1
+                index += 1
+        
+        while index < n and s[index].isdigit():
+            digit = int(s[index])
+            result = (result * 10) + digit
+            index += 1
+            if result > INT_MAX:
+                if sign == 1:
+                    return INT_MAX
+                else:
+                    return INT_MIN
+        
+        return result * sign
+
 # 57: Insert Interval
 class Solution57:
     def insert(self, intervals: List[List[int]], newInterval: List[int]) -> List[List[int]]:
