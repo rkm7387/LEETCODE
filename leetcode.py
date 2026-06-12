@@ -1,3 +1,24 @@
+# 108: Sorted Array to BST
+class TreeNode:
+    def __init__(self, val=0, left=None, right=None):
+        self.val = val
+        self.left = left
+        self.right = right
+class Solution108:
+    def sortedArrayToBST(self, nums: List[int]) -> Optional[TreeNode]:
+        def helper(left,right):
+            if left > right:
+                return None
+            mid = (left + right) // 2
+
+            node = TreeNode(val=nums[mid])
+            node.left = helper(left, mid-1)
+            node.right = helper(mid+1, right)
+
+            return node
+        
+        return helper(0, len(nums)-1)
+
 # 88: Merge Sorted Array
 class Solution88:
     def merge(self, nums1: List[int], m: int, nums2: List[int], n: int) -> None:
