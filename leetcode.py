@@ -1,4 +1,25 @@
-# 136: Single Number:
+# 62: Unique Path
+class Solution62:
+    def uniquePaths(self, m: int, n: int) -> int:
+        dp = [[-1 for _ in range(n)] for _ in range(m)]
+        return self.solve(m-1,n-1,m,n,dp)
+
+
+    def solve(self,i,j,m,n,dp):
+        if i == 0 and j == 0:
+            return 1
+        
+        if i < 0 or  j < 0: 
+            return 0
+        
+        if dp[i][j] != -1:
+            return dp[i][j]
+
+        up = self.solve(i-1, j, m, n, dp)
+        left = self.solve(i, j-1, m, n, dp)
+        dp[i][j] = up + left
+        return dp[i][j]
+
 class Solution:
     def singleNumber(self, nums: List[int]) -> int:
         nums_dict = {}
