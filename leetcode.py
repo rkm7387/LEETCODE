@@ -1,3 +1,26 @@
+# 414: Third Largest
+class Solution414:
+    def thirdMax(self, nums: List[int]) -> int:
+        first,second,third = float('-inf'), float('-inf'), float('-inf')
+        
+        for num in nums:
+            if num == first or num == second or num == third:
+                continue
+            if num > first:
+                third = second
+                second = first
+                first = num
+            
+            elif first > num > second:
+                third = second
+                second = num
+            
+            elif second > num > third:
+                third = num
+
+        return third if third != float('-inf') else first
+        
+
 # 69: Sqrt(x)
 class Solution69:
     def mySqrt(self, x: int) -> int:
