@@ -1,3 +1,20 @@
+# 69: Sqrt(x)
+class Solution69:
+    def mySqrt(self, x: int) -> int:
+        ans = 0
+        low,high = 0, x
+
+        while low <= high:
+            mid = (low + high) // 2
+
+            if mid * mid <= x:
+                ans = mid
+                low = mid + 1
+            else:
+                high = mid - 1
+
+        return ans
+
 # 219: Contains Duplicate II
 class Solution219:
     def containsNearbyDuplicate(self, nums: List[int], k: int) -> bool:
