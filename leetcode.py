@@ -1,3 +1,15 @@
+# 137: Singel Number II
+class Solution:
+    def singleNumber137(self, nums: List[int]) -> int:
+        n = len(nums)
+        nums.sort()
+
+        for i in range(1, n, 3):
+            if nums[i] != nums[i-1]:
+                return nums[i-1]
+        
+        return nums[n-1]
+
 # 414: Third Largest
 class Solution414:
     def thirdMax(self, nums: List[int]) -> int:
@@ -18,8 +30,7 @@ class Solution414:
             elif second > num > third:
                 third = num
 
-        return third if third != float('-inf') else first
-        
+        return third if third != float('-inf') else first    
 
 # 69: Sqrt(x)
 class Solution69:
