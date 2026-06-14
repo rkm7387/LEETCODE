@@ -1,3 +1,18 @@
+# 260: Single Number III
+class Solution260:
+    def singleNumber(self, nums: List[int]) -> List[int]:
+        ans = []
+        nums_dict = {}
+
+        for num in nums:
+            nums_dict[num] = nums_dict.get(num,0) + 1
+
+        for key,val in nums_dict.items():
+            if val == 1:
+                ans.append(key)
+
+        return ans
+
 # 137: Singel Number II
 class Solution:
     def singleNumber137(self, nums: List[int]) -> int:
