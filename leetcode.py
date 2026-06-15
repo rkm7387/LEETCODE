@@ -1,3 +1,16 @@
+# 9: Pallindrome Number:
+class Solution9:
+    def isPalindrome(self, x: int) -> bool:
+        if x < 0:
+            return False
+        result = 0
+        original = x
+        while x:
+            remainder = x % 10
+            x = x//10
+            result = result * 10 + remainder
+        return result == original
+    
 # 4: Median of two sorted array
 class Solution4:
     def findMedianSortedArrays(self, nums1: List[int], nums2: List[int]) -> float:
