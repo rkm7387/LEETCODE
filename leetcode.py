@@ -1,3 +1,11 @@
+# Excel - Convert to Title
+class Solution168:
+    def convertToTitle(self, columnNumber: int) -> str:
+        if columnNumber == 0:
+            return ""
+        columnNumber -= 1
+        return self.convertToTitle(columnNumber // 26) + chr((columnNumber % 26) + 65)4)
+
 # 9: Pallindrome Number:
 class Solution9:
     def isPalindrome(self, x: int) -> bool:
