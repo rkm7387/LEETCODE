@@ -1,3 +1,25 @@
+# 74: Search in 2D Matrix
+class Solution74:
+    def searchMatrix(self, matrix: List[List[int]], target: int) -> bool:
+        n = len(matrix)
+        m = len(matrix[0])
+
+        low, high = 0, n * m -1
+
+        while low <= high:
+            mid = (low + high) // 2
+            row = mid // m
+            col = mid % m
+
+            if matrix[row][col] == target:
+                return True
+            elif matrix[row][col] < target:
+                low = mid + 1
+            else:
+                high = mid -1
+
+        return False   
+
 # 28: Find the first occurance of the string
 class Solution28:
     def strStr(self, haystack: str, needle: str) -> int:
