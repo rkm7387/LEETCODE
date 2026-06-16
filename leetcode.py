@@ -1,3 +1,15 @@
+# 28: Find the first occurance of the string
+class Solution28:
+    def strStr(self, haystack: str, needle: str) -> int:
+        n = len(needle)
+        m = len(haystack)
+        if m < n:
+            return -1
+        for i in range(m+1):
+            if haystack[i:i+n] == needle:
+                return i
+        return -1
+
 # Excel - Convert to Title
 class Solution168:
     def convertToTitle(self, columnNumber: int) -> str:
