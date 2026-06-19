@@ -1,3 +1,22 @@
+# 7: reverse integer
+class Solution7:
+    def reverse(self, x: int) -> int:
+        sign = -1 if x < 0 else 1
+        x = abs(x)
+        new = 0
+
+        while x > 0:
+            remainder = x % 10
+            new = new * 10 + remainder
+            x = x // 10
+
+        reversed_result = new * sign
+
+        if reversed_result < -2 ** 31 or reversed_result > 2 ** 31  - 1:
+            return 0
+        
+        return reversed_result
+
 # 287: Find the duplicate number
 class Solution287:
     def findDuplicate(self, nums: List[int]) -> int:
