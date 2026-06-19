@@ -1,6 +1,6 @@
 # 1482:Minimum number of days to make bouquet
 from typing import List
-class Solution:
+class Solution1482:
     def canMakeBouquet(self, bloomday, m, k, day):
         total = 0
         count = 0
