@@ -1,3 +1,22 @@
+# 24: Swap Nodes in Pairs
+class Solution24:
+    def swapPairs(self, head: Optional[ListNode]) -> Optional[ListNode]:
+        dummy = ListNode(0, head)
+        prev, curr = dummy, head
+
+        while curr and curr.next:
+            nxtPair = curr.next.next
+            second = curr.next
+
+            second.next = curr
+            curr.next = nxtPair
+            prev.next = second
+
+            prev = curr
+            curr = nxtPair
+
+        return dummy.next
+
 # 160: intersection of linked list
 class Solution160:
     def getIntersectionNode(self, headA: ListNode, headB: ListNode) -> Optional[ListNode]:
