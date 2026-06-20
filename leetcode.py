@@ -1,3 +1,23 @@
+# 160: intersection of linked list
+class Solution160:
+    def getIntersectionNode(self, headA: ListNode, headB: ListNode) -> Optional[ListNode]:
+        if not headA or not headB:
+            return None
+        temp1, temp2 = headA, headB
+
+        while temp1 != temp2:
+            if temp1 is not None:
+                temp1 = temp1.next
+            else:
+                temp1 = headB
+            
+            if temp2 is not None:
+                temp2 = temp2.next
+            else:
+                temp2 = headA
+        
+        return temp1
+
 # 540: Single Element in sorted array
 class Solution540:
     def singleNonDuplicate(self, nums: List[int]) -> int:
