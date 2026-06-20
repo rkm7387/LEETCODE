@@ -1,3 +1,26 @@
+# 540: Single Element in sorted array
+class Solution540:
+    def singleNonDuplicate(self, nums: List[int]) -> int:
+        low = 0
+        high = len(nums)-1
+
+        while low <= high:
+            mid = (low + high) // 2
+            if low == high:
+                return nums[low]
+            if nums[mid] != nums[mid-1] and nums[mid] != nums[mid+1]:
+                return nums[mid]
+            if nums[mid] == nums[mid-1]:
+                if mid % 2 == 1:
+                    low = mid + 1
+                else:
+                    high = mid - 1
+            elif nums[mid] == nums[mid + 1]:
+                if mid % 2 == 1:
+                    high = mid - 1
+                else:
+                    low = mid + 1
+
 # 1011: Capacity to ship packages within D days
 class Solution1011:
     def find_days(self, weights, capacity):
