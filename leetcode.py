@@ -1,3 +1,42 @@
+# 126: Word Ladder 2
+class Solution126:
+    def findLadders(self, beginWord: str, endWord: str, wordList: List[str]) -> List[List[str]]:
+        wordSet = set(wordList)
+        if endWord not in wordSet:
+            return []
+        
+        result = []
+        queue = deque()
+        queue.append([beginWord])
+
+        while len(queue) != 0:
+            level_size = len(queue)
+            chosen_words = set()
+
+            for _ in range(level_size):
+                sequence = queue.popleft()
+                last_word = sequence[-1]
+
+                if last_word == endWord:
+                    result.append(sequence)
+                    continue
+                
+                for i in range(len(last_word)):
+                    for ch in "abcdefghijklmnopqrstuvwxyz":
+                        if ch == last_word[i]:
+                            continue
+                        new_word = last_word[:i] + ch + last_word[i+1 :]
+                        if new_word in wordSet:
+                            new_seq = sequence + [new_word]
+                            queue.append(new_seq)
+                            chosen_words.add(new_word)
+
+            for w in chosen_words:
+                wordSet.remove(w)
+
+        return result
+        
+
 # 127: Word Ladder
 class Solution127:
     def ladderLength(self, beginWord: str, endWord: str, wordList: List[str]) -> int:
