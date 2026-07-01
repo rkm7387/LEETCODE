@@ -1,3 +1,12 @@
+# 171: Excel Title Number
+class Solution171:
+    def titleToNumber(self, columnTitle: str) -> int:
+        res = 0
+        for char in columnTitle:
+            x = ord(char) - ord('A') + 1
+            res = res * 26 + x
+        return res
+        
 # 67: Add Binary
 class Solution67:
     def addBinary(self, a: str, b: str) -> str:
