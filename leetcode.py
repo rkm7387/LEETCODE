@@ -1,3 +1,34 @@
+# 802: Find Safe States
+class Solution802:
+    def eventualSafeNodes(self, graph: List[List[int]]) -> List[int]:
+        V = len(graph)
+
+        adj_list = [[] for _ in range(V)]
+        for node in range(V):
+            for adjNode in graph[node]:
+                adj_list[adjNode].append(node)
+        
+        indegrees = [len(graph[node]) for node in range(V)]
+        queue = deque()
+
+        for node in range(V):
+            if indegrees[node] == 0:
+                queue.append(node)        
+        
+        result = []
+
+        while queue:
+            node = queue.popleft()
+            result.append(node)
+            for adjNode in adj_list[node]:
+                indegrees[adjNode] -= 1
+                if indegrees[adjNode] == 0:
+                    queue.append(adjNode)
+
+        result.sort()
+
+        return result
+        
 # 207: Course Schedule
 class Solution207:
     def canFinish(self, numCourses: int, prerequisites: List[List[int]]) -> bool:
