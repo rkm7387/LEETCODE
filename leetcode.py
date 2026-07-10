@@ -1,3 +1,21 @@
+# 1021: Remove Outermost Paranthesis
+class Solution1021:
+    def removeOuterParentheses(self, s: str) -> str:
+        result = ""
+        count = 0
+        for ch in s:
+            if ch == "(":
+                count += 1
+                if count > 1:
+                    result += ch
+            else:
+                count -= 1
+                if count > 0:
+                    result += ch
+
+        return result
+        
+
 # 802: Find Safe States
 class Solution802:
     def eventualSafeNodes(self, graph: List[List[int]]) -> List[int]:
