@@ -1,3 +1,11 @@
+# 796: Rotate a String
+class Solution796:
+    def rotateString(self, s: str, goal: str) -> bool:
+        if len(s) != len(goal):
+            return False
+        string = s + s
+        return goal in string
+
 # 1091: Shortest path in binary matrix
 class Solution1091:
     def shortestPathBinaryMatrix(self, grid: List[List[int]]) -> int:
