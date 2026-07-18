@@ -1,3 +1,47 @@
+# 38: Count and Say
+class Solution38:
+    def countAndSay(self, n: int) -> str:
+        res = "1"
+        for i in range(1,n):
+            current = res[0]
+            count = 1
+            newdata = ""
+            for c in res[1:]:
+                if c == current:
+                    count += 1
+                else:
+                    newdata = newdata + str(count) + current
+                    current = c
+                    count = 1
+            res = newdata + str(count) + current
+        return res
+        
+
+# 1334: Find the city with smallest number of neighbours
+class Solution1334:
+    def findTheCity(self, n: int, edges: List[List[int]], distanceThreshold: int) -> int:
+        INF = sys.maxsize
+        dist = [[INF]*n for _ in range(n)]
+        for u,v,w in edges:
+            dist[u][v] = w
+            dist[v][u] = w
+        for i in range(n):
+            dist[i][i] = 0
+
+        for via in range(n):
+            for i in range(n):
+                for j in range(n):
+                    if dist[i][via] != INF and dist[via][j] != INF:
+                        dist[i][j] = min(dist[i][j], dist[i][via] + dist[via][j])   
+
+        min_cnt, city = n+1, -1
+        for i in range(n):
+            cnt = sum(dist[i][j] <= distanceThreshold for j in range(n))
+            if cnt <= min_cnt:
+                min_cnt, city = cnt, i
+
+        return city     
+
 # 451: Sorted Character by Frequency
 class Solution451:
     def frequencySort(self, s: str) -> str:
